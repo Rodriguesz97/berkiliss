@@ -1,12 +1,14 @@
 import { PrismaClient } from '@prisma/client'
 import fastify from 'fastify'
 import productRoutes from './routes/product.routes'
-//import { z } from 'zod'
+import tableRoutes from './routes/table.routes'
+
 
 const app = fastify()
 const prisma = new PrismaClient()
 
-app.register(productRoutes, { prefix: '/products' });
+app.register(productRoutes, { prefix: '/products' })
+app.register(tableRoutes, { prefix: '/tables' })
 
 app
   .listen({
